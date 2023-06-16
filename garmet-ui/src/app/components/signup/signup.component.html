@@ -1,0 +1,170 @@
+<!--<app-header></app-header>-->
+<!--<div class="max-w-7xl bg-white p-14 mx-auto my-8">-->
+<!--  <div class="w-11/12 mx-auto">-->
+<!--    <div>-->
+<!--      <form #categoryForm="ngForm" (ngSubmit)="onSaveForm(categoryForm)">-->
+<!--        <div class="container">-->
+<!--          <div style="font-size: 16px;">-->
+<!--            <mat-form-field appearance="outline" class="w-full">-->
+<!--              <mat-label>First Name</mat-label>-->
+<!--              <input type="text" matInput  [(ngModel)]="user.firstName" name="name" required />-->
+<!--            </mat-form-field>-->
+<!--          </div>-->
+<!--        </div>-->
+
+
+<!--        <div class="container">-->
+<!--          <div style="font-size: 16px;">-->
+<!--            <mat-form-field appearance="outline" class="w-full">-->
+<!--              <mat-label>Last Name</mat-label>-->
+<!--              <input type="text" matInput  [(ngModel)]="user.lastName" name="name" required />-->
+<!--            </mat-form-field>-->
+<!--          </div>-->
+<!--        </div>-->
+
+<!--        <div class="container">-->
+<!--          <div style="font-size: 16px;">-->
+<!--            <mat-form-field appearance="outline" class="w-full">-->
+<!--              <mat-label>Phone</mat-label>-->
+<!--              <input type="text" matInput  [(ngModel)]="user.phone" name="name" required />-->
+<!--            </mat-form-field>-->
+<!--          </div>-->
+<!--        </div>-->
+
+<!--        <div class="container">-->
+<!--          <div style="font-size: 16px;">-->
+<!--            <mat-form-field appearance="outline" class="w-full">-->
+<!--              <mat-label>Username</mat-label>-->
+<!--              <input type="text" matInput  [(ngModel)]="user.username" name="name" required />-->
+<!--            </mat-form-field>-->
+<!--          </div>-->
+<!--        </div>-->
+
+<!--        <div class="container">-->
+<!--          <div style="font-size: 16px;">-->
+<!--            <mat-form-field appearance="outline" class="w-full">-->
+<!--              <mat-label>Password</mat-label>-->
+<!--              <input type="password" matInput  [(ngModel)]="user.password" name="name" required />-->
+<!--            </mat-form-field>-->
+<!--          </div>-->
+<!--        </div>-->
+
+<!--        <div class="container">-->
+<!--          <div style="font-size: 16px;">-->
+<!--            <mat-form-field appearance="outline" class="w-full">-->
+<!--              <mat-label>Confirm Password</mat-label>-->
+<!--              <input type="password" matInput  [(ngModel)]="confirmPassword" name="name" required />-->
+<!--            </mat-form-field>-->
+<!--          </div>-->
+<!--        </div>-->
+
+<!--        <div class="flex mt-3 justify-center md:justify-end">-->
+<!--          <button mat-stroked-button class="border border-blue-500 text-blue-500 w-auto md:w-40" matDialogClose="" (click)="clearForm(categoryForm)">-->
+<!--            CANCEL-->
+<!--          </button>-->
+<!--          &nbsp; &nbsp;-->
+<!--          <button type="submit" mat-raised-button class="bg-blue-500 text-white container items-center w-auto md:w-40  font-semibold">-->
+<!--            SAVE-->
+<!--          </button>-->
+<!--        </div>-->
+<!--      </form>-->
+<!--    </div>-->
+<!--  </div>-->
+<!--</div>-->
+
+
+<section class="w-full bg-white min-h-screen flex items-center justify-center">
+  <!-- login container -->
+  <div class="bg-gray-100 flex rounded-2xl shadow-lg max-w-5xl p-5 items-center">
+    <!-- form -->
+    <div class="md:w-1/2 px-8 md:px-16">
+      <h2 class="font-bold text-2xl text-slate-800">Signup</h2>
+
+      <form #categoryForm="ngForm" (ngSubmit)="onSaveForm(categoryForm)">
+        <div class="container">
+          <div style="font-size: 16px;">
+            <mat-form-field appearance="outline" class="w-full">
+              <mat-label>First Name</mat-label>
+              <input type="text" matInput  [(ngModel)]="user.firstName" name="name" required />
+            </mat-form-field>
+          </div>
+        </div>
+
+
+        <div class="container">
+          <div style="font-size: 16px;">
+            <mat-form-field appearance="outline" class="w-full">
+              <mat-label>Last Name</mat-label>
+              <input type="text" matInput  [(ngModel)]="user.lastName" name="name" required />
+            </mat-form-field>
+          </div>
+        </div>
+
+        <div class="container">
+          <div style="font-size: 16px;">
+            <mat-form-field appearance="outline" class="w-full">
+              <mat-label>Phone</mat-label>
+              <input type="text" matInput  [(ngModel)]="user.phone" name="name" required />
+            </mat-form-field>
+          </div>
+        </div>
+
+        <div class="container">
+          <div style="font-size: 16px;">
+            <mat-form-field appearance="outline" class="w-full">
+              <mat-label>Username</mat-label>
+              <input type="text" matInput  [(ngModel)]="user.username" name="name" required />
+            </mat-form-field>
+          </div>
+        </div>
+
+        <div class="container">
+          <div style="font-size: 16px;">
+            <mat-form-field appearance="outline" class="w-full">
+              <mat-label>Password</mat-label>
+              <input type="password" matInput  [(ngModel)]="user.password" name="name" required />
+            </mat-form-field>
+          </div>
+        </div>
+
+        <div class="container">
+          <div style="font-size: 16px;">
+            <mat-form-field appearance="outline" class="w-full">
+              <mat-label>Confirm Password</mat-label>
+              <input type="password" matInput  [(ngModel)]="confirmPassword" name="name" required />
+            </mat-form-field>
+          </div>
+        </div>
+
+        <div class="flex mt-3 justify-center md:justify-end">
+          <button mat-stroked-button class="border border-blue-500 text-blue-500 w-auto md:w-40" matDialogClose="" (click)="clearForm(categoryForm)">
+            CANCEL
+          </button>
+          &nbsp; &nbsp;
+          <button type="submit" mat-raised-button class="bg-blue-500 text-white container items-center w-auto md:w-40  font-semibold">
+            SAVE
+          </button>
+        </div>
+      </form>
+
+      <div class="mt-6 grid grid-cols-3 items-center text-gray-400">
+        <hr class="border-gray-400">
+        <p class="text-center text-sm">OR</p>
+        <hr class="border-gray-400">
+      </div>
+
+      <div class="mt-3 text-xs flex justify-between items-center text-[#002D74]">
+        <p>Go Back Home</p>
+        <button routerLink="/product" class="py-2 px-5 bg-white border rounded-xl hover:scale-110 duration-300">Home</button>
+      </div>
+    </div>
+
+    <!-- image -->
+    <div class="md:block hidden w-1/2">
+      <img class="rounded-2xl" src="/assets/images/photo-1616606103915-dea7be788566.avif">
+    </div>
+  </div>
+</section>
+
+
+

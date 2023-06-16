@@ -1,0 +1,128 @@
+<div class="w-10/12  grid grid-cols-4 gap-6 mt-10 mb-5 mx-auto">
+
+  <div class="bg-white border-slate-200 rounded-xl shadow-3xl p-4">
+    <div class="flex justify-between mb-3">
+      <div class="-mt-8 w-16 h-16  bg-slate-800 text-white container items-center flex justify-center rounded-md shadow-slate-800">
+        <mat-icon class="mat-18">payments</mat-icon>
+      </div>
+      <div class="flex flex-col ">
+        <span class="text-gray-400 font-light text-xl">ORDERS</span>
+        <span class="text-gray-700 font-bold text-base">{{summary.totalOrders}}</span>
+      </div>
+    </div>
+    <mat-divider></mat-divider>
+    <div class=""></div>
+  </div>
+
+  <div class="bg-white border-slate-200 rounded-xl shadow-3xl p-4">
+    <div class="flex justify-between mb-3">
+      <div class="-mt-8 w-16 h-16  bg-blue-400 text-white container items-center flex justify-center rounded-md shadow-slate-800">
+        <mat-icon class="mat-18">inventory_2</mat-icon>
+      </div>
+      <div class="flex flex-col ">
+        <span class="text-gray-400 font-light text-xl">PRODUCTS</span>
+        <span class="text-gray-700 font-bold text-base">{{summary.totalProducts}}</span>
+      </div>
+    </div>
+    <mat-divider></mat-divider>
+    <div class=""></div>
+  </div>
+
+  <div class="bg-white border-slate-200 rounded-xl shadow-3xl p-4">
+    <div class="flex justify-between mb-3">
+      <div class="-mt-8 w-16 h-16  bg-green-700 text-white container items-center flex justify-center rounded-md shadow-slate-800">
+        <mat-icon class="mat-18">category</mat-icon>
+      </div>
+      <div class="flex flex-col ">
+        <span class="text-gray-400 font-light text-xl">CATEGORIES</span>
+        <span class="text-gray-700 font-bold text-base">{{summary.totalCategories}}</span>
+      </div>
+    </div>
+    <mat-divider></mat-divider>
+    <div class=""></div>
+  </div>
+
+  <div class="bg-white border-slate-200 rounded-xl shadow-3xl p-4">
+    <div class="flex justify-between mb-3">
+      <div class="-mt-8 w-16 h-16  bg-yellow-500 text-white container items-center flex justify-center rounded-md shadow-slate-800">
+        <mat-icon class="mat-18">group</mat-icon>
+      </div>
+      <div class="flex flex-col ">
+        <span class="text-gray-400 font-light text-xl">USERS</span>
+        <span class="text-gray-700 font-bold text-base">{{summary.totalUsers}}</span>
+      </div>
+    </div>
+    <mat-divider></mat-divider>
+    <div class=""></div>
+  </div>
+
+</div>
+
+<div class="flex w-10/12 mx-auto">
+  <div class="w-full bg-white p-5">
+    <div class="flex justify-between ">
+      <div class="text-xl font-bold">USERS</div>
+    </div>
+    <div class="my-3">
+      <table mat-table [dataSource]="users" matSort ="mat-elevation-z8">
+
+        <!-- Checkbox Column -->
+
+
+        <ng-container matColumnDef="firstName">
+          <th class="font-bold text-xl text-slate-700" mat-header-cell *matHeaderCellDef  mat-sort-header sortActionDescription="Sort by name"> First Name </th>
+          <td mat-cell *matCellDef="let element"> {{element.firstName}} </td>
+        </ng-container>
+
+        <ng-container matColumnDef="lastName">
+          <th class="font-bold text-xl text-slate-700" mat-header-cell *matHeaderCellDef mat-sort-header sortActionDescription="Sort by Total Quantity">Last Name </th>
+          <td mat-cell *matCellDef="let element"> {{element.lastName}} </td>
+        </ng-container>
+
+        <ng-container matColumnDef="phone">
+          <th class="font-bold text-xl text-slate-700" mat-header-cell *matHeaderCellDef mat-sort-header sortActionDescription="Phone"> Phone </th>
+          <td mat-cell *matCellDef="let element"> {{element.phone}} </td>
+        </ng-container>
+
+        <ng-container matColumnDef="username">
+          <th class="font-bold text-xl text-slate-700" mat-header-cell *matHeaderCellDef  mat-sort-header sortActionDescription="Username"> Username </th>
+          <td mat-cell *matCellDef="let element"> {{element.username}} </td>
+        </ng-container>
+
+        <ng-container matColumnDef="roles">
+          <th class="font-bold text-xl text-slate-700" mat-header-cell *matHeaderCellDef  mat-sort-header sortActionDescription="roles"> Roles </th>
+          <td mat-cell *matCellDef="let element">
+            <mat-chip-set>
+              <mat-chip *ngFor="let role of element.roles" >{{role.name}}</mat-chip>
+            </mat-chip-set>
+          </td>
+        </ng-container>
+
+        <ng-container matColumnDef="action" >
+          <th class="font-bold text-xl text-slate-700" mat-header-cell *matHeaderCellDef>Action</th>
+          <td mat-cell *matCellDef="let element">
+            <div class="flex w-full justify-center">
+
+              <button (click)="changeRoles(element)" class= "ml-1 flex items-center container font-semibold">
+                <mat-icon class="text-slate-800 text-base">settings</mat-icon>
+                <span class="text-slate-800">settings</span>
+              </button>
+
+              <button (click)="deleteUser(element.id)" class="ml-1 flex items-center container">
+                <mat-icon class="text-red-500 text-base ">delete</mat-icon>
+                <span class="text-red-400">delete</span>
+              </button>
+            </div>
+          </td>
+        </ng-container>
+
+        <tr mat-header-row *matHeaderRowDef="displayedColumns"></tr>
+        <tr mat-row *matRowDef="let row; columns: displayedColumns;">
+        </tr>
+      </table>
+    </div>
+    <div>
+
+    </div>
+  </div>
+</div>

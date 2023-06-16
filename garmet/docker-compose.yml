@@ -1,0 +1,19 @@
+version: '3'
+services:
+  garmet-mysql:
+    image: mysql:8.0.26
+    container_name: garmet-mysql
+    ports:
+      - 3309:3306
+    environment:
+      - MYSQL_ROOT_PASSWORD=root
+    volumes:
+      - ./scripts:/docker-entrypoint-initdb.d/
+      - ./conf:/etc/mysql/conf.d
+
+  garmet:
+    build: .
+    container_name: garmet
+    network_mode: host
+    depends_on:
+      - garmet-mysql

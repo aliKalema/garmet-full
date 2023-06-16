@@ -1,0 +1,81 @@
+
+<div class="h-16 w-full container flex items-center justify-between mx-auto bg-slate-100">
+
+  <div>
+    <a href="#" class="header-logo">
+      <img src="./assets/images/logo/logo.svg" alt="Anon's logo" width="120" height="36">
+    </a>
+  </div>
+  <div class="flex container w-auto items-center  text-gray-600">
+      <div *ngIf="isLoggedIn">
+        <button mat-icon-button [matMenuTriggerFor]="profileMenu" >
+          <mat-icon>account_circle</mat-icon>
+        </button>
+        <mat-menu class="w-72 p-5" #profileMenu="matMenu">
+         <div class="w-full">
+           <div class="flex justify-center mb-5">
+             <div class="rounded-full bg-blue-400 w-24  h-24 text-white text-4xl font-bold container flex items-center justify-center">{{profile.firstName?.charAt(0)}}</div>
+           </div>
+
+           <div class="text-xl font-semibold flex justify-center text-gray-600"> {{profile.firstName}} {{profile.lastName}} </div>
+           <div class="text-xl font-semibold flex justify-center text-gray-600"> {{profile.phone}} </div>
+           <mat-divider class="mx-3 p-2"></mat-divider>
+           <div class="flex justify-center"> <button mat-button (click)="editProfile()" color="primary">Edit Profile</button> </div>
+
+         </div>
+        </mat-menu>
+      </div>
+
+      <div *ngIf="!isAdmin">
+        <button mat-icon-button routerLink="/wishlist">
+          <mat-icon>favorite</mat-icon>
+        </button>
+      </div>
+
+      <div *ngIf="!isAdmin" class="">
+          <button mat-icon-button [matMenuTriggerFor]="menu">
+            <mat-icon [matBadge]="(cartQuantity)" [matBadgeHidden]="!(cartQuantity)" matBadgeColor="warn" >
+              shopping_cart
+            </mat-icon>
+          </button>
+          <mat-menu #menu="matMenu">
+            <div class="p-3 divide-y divide-solid">
+              <div class="pb-3 flex justify-between">
+                <span class="mr-16">{{ cartQuantity }} items</span>
+                <a routerLink="/cart">View Cart</a>
+              </div>
+              <div *ngIf="(cartList)?.length" class="py-3">
+                <div  *ngFor="let item of cartList" class="flex justify-between font-light mb-2" >
+                  {{ item.productName }}({{item.varietyName}}) x {{ item.quantity }}
+                  <span class="font-bold not-italic">{{ item.price}}</span>
+                </div>
+              </div>
+              <div class="flex justify-between py-3 font-light">
+                Total:
+                <span class="font-bold not-italic">{{ cartTotal | currency:'KSH ' }}</span>
+              </div>
+              <div class="pt-3 flex justify-between">
+                <button (click)="onClearCart()"  class="bg-rose-600 text-white rounded-full w-9 h-9 red" mat-mini-fab style=" background-color: rgb(220,38,38) !important;">
+                  <mat-icon>remove_shopping_cart</mat-icon>
+                </button>
+                <button routerLink="/cart" class="bg-green-600 text-white rounded-full w-9 h-9" mat-mini-fab style="background-color: rgb(22,101,52) !important" >
+                  <mat-icon >shopping_cart_checkout</mat-icon>
+                </button>
+              </div>
+            </div>
+          </mat-menu>
+      </div>
+
+    <div *ngIf="isLoggedIn">
+      <button mat-icon-button routerLink="/favorite" (click)="logout()">
+        <mat-icon>logout</mat-icon>
+      </button>
+    </div>
+
+    <div *ngIf="!isLoggedIn">
+      <button mat-icon-button routerLink="/login" >
+        <mat-icon>login</mat-icon>
+      </button>
+    </div>
+  </div>
+</div>

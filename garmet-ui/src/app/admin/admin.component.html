@@ -1,0 +1,21 @@
+<mat-drawer-container class="min-h-full w-full bg-slate-100" autosize>
+  <mat-drawer #sidenav class=" bg-gradient-to-br from-zinc-600 to-zinc-900" mode="side" >
+    <div class="h-auto">
+      <app-sidenav></app-sidenav>
+    </div>
+  </mat-drawer>
+  <div class="h-full">
+    <div class="flex w-full container items-center">
+      <header class="mx-3">
+        <button (click)="toggleSideNav()" mat-mini-fab class="border border-slate-700 text-slate-700 bg-slate-200">
+          <mat-icon>menu</mat-icon>
+        </button>
+      </header>
+      <div class="ml-2 mr-6 grow">
+        <app-header></app-header>
+      </div>
+    </div>
+      <router-outlet></router-outlet>
+  </div>
+</mat-drawer-container>
+

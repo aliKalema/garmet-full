@@ -1,0 +1,51 @@
+<div class="bg-white p-6 my-8 mx-12 relative rounded-lg">
+  <div class="w-full container items-center  md:flex">
+    <div class="w-full md:w-1/2 md:mr-40 flex">
+      <div class="w-1/2">
+        <img class="w-full max-h-72 rounded" [src]="product?.images?.[0]?.url || '' " alt="">
+      </div>
+      <mat-divider class="p-3 mx-2" vertical></mat-divider>
+      <div class="w-1/2">
+        <div class="grid grid-cols-3 my-3 gap-2" *ngIf="product.images!.length>1">
+          <div class="rounded-md border" *ngFor="let image of product.images | slice:1; let i = index;">
+            <img class=" h-32" [src]="image.url || '' " alt="">
+          </div>
+        </div>
+      </div>
+    </div>
+    <div class="w-full md:w-1/2">
+      <div class="text-slate-900 text-3xl capitalize font-bold">
+        {{product.name}}
+      </div>
+
+      <div>
+        <span>total Quantities</span>
+        <span>{{product.totalQuantity}}</span>
+      </div>
+
+      <div>
+        <span>description</span>
+        <span>{{product.description}}</span>
+      </div>
+
+      <div class="my-8 flex flex-col justify-center md:justify-between md:flex-row">
+        <div class="flex justify-center my-1">
+          <button mat-button style="border: #3b82f6 solid 1px;" class=" font-bold text-blue-500 py-2 w-40" (click)="openVarietyDialog()">Add Variety</button>
+        </div>
+        <div class="flex justify-center my-1">
+          <button mat-button  style="border: rgb(21 128 61) solid 1px;" class="border border-green-700 font-bold text-green-700 w-40 py-2 " (click)="editProduct()">Edit Product</button>
+        </div>
+        <div class="flex justify-center my-1">
+          <button mat-flat-button color="warn" class="w-40" (click)="deleteProduct()">Delete Product</button>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+
+<div class="flex my-8 mx-12">
+  <div class="ml-6 w-full">
+    <app-variety-table (removeVariety)="removeVariety($event)" [varieties]="getVarieties()" ></app-variety-table>
+  </div>
+</div>
+

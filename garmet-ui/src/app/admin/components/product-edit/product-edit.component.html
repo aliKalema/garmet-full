@@ -1,0 +1,98 @@
+<div class="bg-white p-6 container w-auto my-8 mx-12 items-center relative rounded-lg">
+  <div class="-mt-12 mb-8 bg-blue-500 text-white w-16 h-16 rounded container items-center flex justify-center text-base">
+    <mat-icon>post_add</mat-icon>
+  </div>
+  <form  #productForm="ngForm" (ngSubmit)="onSaveForm(productForm)">
+    <div class=" container w-full md:flex">
+      <div class="container md:w-1/2 md:mr-3">
+
+        <div class="container">
+          <div style="font-size: 16px;">
+            <mat-form-field appearance="outline" class="w-full">
+              <mat-label>Product Name</mat-label>
+              <input type="text" matInput  name="name" [(ngModel)]="product.name"/>
+            </mat-form-field>
+          </div>
+        </div>
+
+        <div>
+          <mat-form-field appearance="fill" [hideRequiredMarker]="hideRequiredControl!.value!" [floatLabel]="getFloatLabelValue()" class="w-full">
+            <mat-select #categorySelect required [(ngModel)]="product.categories" [(value)]="product.categories" [compareWith] ="compareCategories" name="countryId" multiple>
+              <mat-select-trigger>
+                {{ product?.categories?.[0]?.name || '' }}
+                <span *ngIf="(product.categories?.length || 0) > 1" class="opacity-75 text-sm">
+                  (+{{(product.categories?.length || 0) - 1}} {{product.categories?.length === 2 ? 'other' : 'others'}})
+                </span>
+              </mat-select-trigger>
+
+              <mat-option (click)="clearCategory()" >None</mat-option>
+              <mat-option class="flex justify-between" *ngFor="let category of categories"  [value]="category" >
+                <div class="flex justify-between">
+                  <span class="uppercase">{{category!.name}}</span>
+                </div>
+              </mat-option>
+            </mat-select>
+            <mat-label>
+              <b> CATEGORY</b>
+            </mat-label>
+          </mat-form-field>
+        </div>
+
+        <mat-form-field class="w-full">
+          <mat-label>Description</mat-label>
+          <textarea matInput placeholder="Ex. The product..."name="description" [(ngModel)]="product.description"></textarea>
+        </mat-form-field>
+
+        <div class="w-full">
+          <a (click)="openAddVarietyDialog()"  class=" flex hover:border-blue-500 hover:border-solid hover:bg-white hover:text-blue-500 group w-full items-center justify-center rounded-md border-2 border-dashed border-slate-300 text-sm leading-6 text-slate-900 font-medium py-3">
+            <mat-icon class="mr-2">add</mat-icon>
+            <span>VARIETY</span>
+          </a>
+        </div>
+
+        <div class="my-3 w-full">
+          <app-variety-table (removeVariety)="removeVariety($event)" [varieties]="varietiesObservable()" ></app-variety-table>
+        </div>
+
+      </div>
+
+      <div class="container md:w-1/2 md:ml-3">
+        <div class="flex" appDrag (fileEmitter)="onFilesDropped($event)">
+          <a  class="hover:border-blue-500 hover:border-solid hover:bg-white hover:text-blue-500 group w-full flex flex-col items-center justify-center rounded-md border-2 border-dashed border-slate-300 text-sm leading-6 text-slate-900 font-medium py-3">
+            Drag and Drop Image
+            <span>or</span>
+            <a  mat-button (click)="selectFile.click()">Browse here</a>
+          </a>
+        </div>
+        <input  type="file" class="hidden" multiple #selectFile value="select" (change)="onFileSelected($event)">
+
+        <div class="my-3">
+          <mat-grid-list cols="4" rowHeight="1:1">
+            <mat-grid-tile  *ngFor="let image of images; let i = index;" >
+              <div class="border border-zinc-800 relative rounded h-full w-full m-1">
+                <button class="absolute right-2 top-2 text-rose-600 text-xl rounded-full border border-rose-600 flex container items-center justify-center w-8 h-8  hover:scale-125 duration-150" (click)="removeImage(i)">
+                  <mat-icon>delete</mat-icon>
+                </button>
+                <div class="w-full h-full">
+                  <img class="h-full max-h-full max-w-full" [src]="image.url">
+                </div>
+              </div>
+            </mat-grid-tile>
+          </mat-grid-list>
+        </div>
+
+      </div>
+    </div>
+    <div class="flex mt-3 justify-center md:justify-end">
+      <a mat-stroked-button class="border border-blue-500 text-blue-500 w-auto md:w-40">
+        <mat-icon class="-mt-1 text-base">clear</mat-icon>
+        CLEAR
+      </a>
+      &nbsp; &nbsp;
+      <button type="submit" mat-raised-button class="bg-blue-500 text-white container items-center w-auto md:w-40  font-semibold" >
+        <mat-icon class="-mt-1 text-base">save</mat-icon>
+        SAVE
+      </button>
+    </div>
+  </form>
+</div>

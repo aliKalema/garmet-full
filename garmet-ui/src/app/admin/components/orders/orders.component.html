@@ -1,0 +1,104 @@
+
+<div class="max-w-7xl mx-auto mb-2 p-6 bg-white">
+  <table mat-table class="mat-elevation-z8" [dataSource]="orders" matSort ="mat-elevation-z8" multiTemplateDataRows>
+    <ng-container matColumnDef="firstName">
+      <th class="text-xl font-semibold" mat-header-cell *matHeaderCellDef  mat-sort-header sortActionDescription="Sort by name"> First Name </th>
+      <td mat-cell *matCellDef="let element"> {{element.user.firstName}} </td>
+    </ng-container>
+
+    <ng-container matColumnDef="lastName">
+      <th class="text-xl font-semibold" mat-header-cell *matHeaderCellDef mat-sort-header sortActionDescription="Sort by Total Quantity">Last Name </th>
+      <td mat-cell *matCellDef="let element"> {{element.user.lastName}} </td>
+    </ng-container>
+
+    <ng-container matColumnDef="phone">
+      <th class="text-xl font-semibold" mat-header-cell *matHeaderCellDef mat-sort-header sortActionDescription="Phone"> Phone </th>
+      <td mat-cell *matCellDef="let element"> {{element.user.phone}} </td>
+    </ng-container>
+
+    <ng-container matColumnDef="status">
+      <th class="text-xl font-semibold" mat-header-cell *matHeaderCellDef  mat-sort-header sortActionDescription="Username"> Status </th>
+      <td mat-cell *matCellDef="let element">
+        <mat-chip class="font-semibold">{{element.orderStatus}} </mat-chip>
+      </td>
+    </ng-container>
+
+    <ng-container matColumnDef="quantity">
+      <th class="text-xl font-semibold" mat-header-cell *matHeaderCellDef  mat-sort-header sortActionDescription="Username"> Quantity </th>
+      <td mat-cell *matCellDef="let element"> {{element.orderItems!.length}} </td>
+    </ng-container>
+
+    <ng-container matColumnDef="orderDate">
+    <th class="text-xl font-semibold" mat-header-cell *matHeaderCellDef  mat-sort-header sortActionDescription="Username"> Order Date </th>
+    <td mat-cell *matCellDef="let element"> {{element.timestamp}} </td>
+    </ng-container>
+
+    <ng-container matColumnDef="total">
+      <th class="text-xl font-semibold" mat-header-cell *matHeaderCellDef  mat-sort-header sortActionDescription="Username"> Total </th>
+      <td mat-cell *matCellDef="let element"> {{element.total  | currency: 'Ksh ' }} </td>
+    </ng-container>
+
+    <ng-container matColumnDef="expand">
+      <th mat-header-cell *matHeaderCellDef aria-label="row actions">&nbsp;</th>
+      <td mat-cell *matCellDef="let element">
+        <button mat-icon-button aria-label="expand row" (click)="(expandedElement = expandedElement === element ? null : element); $event.stopPropagation()">
+          <mat-icon *ngIf="expandedElement !== element">keyboard_arrow_down</mat-icon>
+          <mat-icon *ngIf="expandedElement === element">keyboard_arrow_up</mat-icon>
+        </button>
+      </td>
+    </ng-container>
+
+    <ng-container matColumnDef="expandedDetail">
+      <td mat-cell *matCellDef="let element" [attr.colspan]="columnsToDisplayWithExpand.length">
+        <div class="example-element-detail"
+             [@detailExpand]="element == expandedElement ? 'expanded' : 'collapsed'">
+          <div *ngIf="element.orderItems" class="w-full grid grid-cols-3 gap-3 my-4 example-element-description">
+            <div *ngFor="let orderItem of element.orderItems" class="bg-gray-200 p-4 rounded-md shadow">
+              <div class="flex mb-2">
+                <div class="text-gray-600 w-1/4">Name :</div>
+                <div class="text-slate-800 font-semibold">{{orderItem.productName}}({{orderItem.productVariety.name}})</div>
+              </div>
+              <div class="flex mb-2 ">
+                <div class="text-gray-600 w-1/4">Price :</div>
+                <div class="text-slate-800 font-semibold">{{orderItem.price}} </div>
+              </div>
+              <div class="flex mb-2">
+                <div class="text-gray-600 w-1/4">Quantity :</div>
+                <div class="text-slate-800 font-semibold"> {{orderItem.quantity}}</div>
+              </div>
+            </div>
+
+<!--            <table mat-table [dataSource]="element.orderItems">-->
+<!--              <ng-container matColumnDef="productName">-->
+<!--                <th class="text-xl font-semibold" mat-header-cell *matHeaderCellDef> Name </th>-->
+<!--                <td mat-cell *matCellDef="let orderItem"> {{orderItem.productName}}({{orderItem.productVariety.name}})</td>-->
+<!--              </ng-container>-->
+
+<!--              <ng-container matColumnDef="price">-->
+<!--                <th class="text-xl font-semibold" mat-header-cell *matHeaderCellDef> Price </th>-->
+<!--                <td mat-cell *matCellDef="let orderItem"> {{orderItem.price}} </td>-->
+<!--              </ng-container>-->
+
+<!--              <ng-container matColumnDef="quantity">-->
+<!--                <th class="text-xl font-semibold" mat-header-cell *matHeaderCellDef> Quantity </th>-->
+<!--                <td mat-cell *matCellDef="let orderItem"> {{orderItem.quantity}} </td>-->
+<!--              </ng-container>-->
+
+<!--              <tr mat-header-row *matHeaderRowDef="orderItemsColumns"></tr>-->
+<!--              <tr mat-row *matRowDef="let row; columns: orderItemsColumns;"></tr>-->
+<!--            </table>-->
+          </div>
+        </div>
+      </td>
+    </ng-container>
+
+    <tr mat-header-row *matHeaderRowDef="columnsToDisplayWithExpand"></tr>
+    <tr mat-row *matRowDef="let element; columns: columnsToDisplayWithExpand;"
+        class="example-element-row"
+        [class.example-expanded-row]="expandedElement === element"
+        (click)="expandedElement = expandedElement === element ? null : element">
+    </tr>
+    <tr mat-row *matRowDef="let row; columns: ['expandedDetail']" class="example-detail-row"></tr>
+
+  </table>
+</div>

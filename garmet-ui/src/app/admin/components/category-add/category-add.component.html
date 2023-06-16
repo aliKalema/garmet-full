@@ -1,0 +1,46 @@
+<div class="w-full bg-white p-14">
+  <div class="w-11/12 mx-auto">
+    <div class="text-slate-700 w-full my-8 text-xl font-semibold text-slate-900 ">
+      ADD CATEGORY
+    </div>
+    <div>
+      <form #categoryForm="ngForm" (ngSubmit)="onSaveForm(categoryForm)">
+        <div class="container">
+          <div style="font-size: 16px;">
+            <mat-form-field appearance="outline" class="w-full">
+              <mat-label>Category Name</mat-label>
+              <input type="text" matInput  [(ngModel)]="category.name" name="name" required />
+            </mat-form-field>
+          </div>
+        </div>
+        <div>
+           <mat-form-field class="w-full" >
+             <mat-label>Select Parent</mat-label>
+             <input class="w-full" type="text"
+                    placeholder="Pick one"
+                    aria-label="Number"
+                    matInput
+                    required
+                    [formControl]="searchInput"
+                    [matAutocomplete]="auto">
+               <mat-autocomplete  #auto="matAutocomplete" >
+                 <mat-option *ngFor="let category of getCategories() | async"  (click)="selectParent(category)" [value]="category.name">
+                   {{ category.name }}
+                 </mat-option>
+<!--                 <mat-paginator [length]="cats.length" [pageSize]="pageSize"></mat-paginator>-->
+               </mat-autocomplete>
+           </mat-form-field>
+        </div>
+        <div class="flex mt-3 justify-center md:justify-end">
+          <button mat-stroked-button class="border border-blue-500 text-blue-500 w-auto md:w-40" matDialogClose="" (click)="clearForm(categoryForm)">
+            CANCEL
+          </button>
+          &nbsp; &nbsp;
+          <button type="submit" mat-raised-button class="bg-blue-500 text-white container items-center w-auto md:w-40  font-semibold">
+            SAVE
+          </button>
+        </div>
+      </form>
+    </div>
+  </div>
+</div>

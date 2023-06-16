@@ -1,0 +1,43 @@
+<div class=" p-3 container flex items-center" [ngClass]="{'justify-center':isMinimized}">
+  <div class="rounded-full bg-blue-400 w-12  h-12 text-white text-2xl font-bold container flex items-center justify-center">{{profile.firstName?.charAt(0)}}</div>
+  <span *ngIf="!isMinimized" class="ml-5 text-white text-xl font-bold capitalize uppercase">{{profile.firstName}} </span>
+</div>
+<mat-divider *ngIf="isMinimized" class="bg-white mx-auto w-9/12"></mat-divider>
+<ul class="list-none h-full  flex flex-col pt-6">
+  <li  class="container flex items-center my-1 py-3 mx-1" routerLink="/admin/dashboard" routerLinkActive="bg-gray-300 text-gray-800 w-full">
+    <a class="border-gray-300  border rounded flex items-center justify-center container w-[45px] h-[45px] ml-3" routerLinkActive="border-gray-700 ">
+      <mat-icon class="text-gray-200" routerLinkActive="text-gray-800 border-2"> dashboard</mat-icon>
+    </a>
+    <div *ngIf="!isMinimized" class="list-item-text text-white text-xl font-bold ml-3 pr-4" routerLinkActive="text-gray-800">Dashboard</div>
+  </li>
+
+  <li  class="container flex items-center my-1 py-3 mx-1" routerLink="/admin/product" [routerLinkActiveOptions]="{ exact: true }" routerLinkActive="bg-gray-300 text-gray-800 w-full">
+    <a class="border-gray-300  border rounded flex items-center justify-center container w-[45px] h-[45px] ml-3" [routerLinkActiveOptions]="{ exact: true }" routerLinkActive="border-gray-700 ">
+      <mat-icon class="text-gray-200" [routerLinkActiveOptions]="{ exact: true }" routerLinkActive="text-gray-800"> inventory_2</mat-icon>
+    </a>
+    <div *ngIf="!isMinimized" class="list-item-text text-white text-xl font-bold ml-3 pr-4" [routerLinkActiveOptions]="{ exact: true }" routerLinkActive="text-gray-800">Product</div>
+  </li>
+
+  <li  class="container flex items-center my-1 py-3 mx-1" routerLink="/admin/product/add" [routerLinkActiveOptions]="{ exact: true }" routerLinkActive="bg-gray-300 text-gray-800 w-full ">
+    <a class="border-gray-300  border rounded flex items-center justify-center container w-[45px] h-[45px] ml-3" [routerLinkActiveOptions]="{ exact: true }" routerLinkActive="border-gray-700 ">
+      <mat-icon class="text-gray-200" routerLinkActive="text-gray-800"> description</mat-icon>
+    </a>
+    <div *ngIf="!isMinimized" class="list-item-text text-white text-xl font-bold ml-3 pr-4" [routerLinkActiveOptions]="{ exact: true }" routerLinkActive="text-gray-800">Product Form</div>
+  </li>
+
+  <li  class="container flex items-center my-1 py-3 mx-1" routerLink="/admin/category" routerLinkActive="bg-gray-300 text-gray-800 w-full ">
+    <a class="border-gray-300  border rounded flex items-center justify-center container w-[45px] h-[45px] ml-3" routerLinkActive="border-gray-700 ">
+      <mat-icon class="text-gray-200" routerLinkActive="text-gray-800"> category</mat-icon>
+    </a>
+    <div *ngIf="!isMinimized" class="list-item-text text-white text-xl font-bold ml-3 pr-4" routerLinkActive="text-gray-800">Category</div>
+  </li>
+
+
+  <li  class="container flex items-center my-1 py-3 " routerLink="/admin/order" routerLinkActive="bg-gray-300 text-gray-800 w-full ">
+    <a class="border-gray-300  border rounded flex items-center justify-center container w-[45px] h-[45px] ml-3" routerLinkActive="border-gray-700">
+      <mat-icon class="text-gray-200" routerLinkActive="text-gray-800"> grading</mat-icon>
+    </a>
+    <div *ngIf="!isMinimized" class="list-item-text text-white text-xl font-bold ml-3 pr-4" routerLinkActive="text-gray-800">Orders</div>
+  </li>
+
+</ul>

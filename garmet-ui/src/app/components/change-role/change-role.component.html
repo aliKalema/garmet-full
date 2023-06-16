@@ -1,0 +1,13 @@
+<div class="w-full py-8 px-6 my-4 rounded-md">
+  <div class="">
+    <div class="text-slate-700 font-bold text-xl mb-3">USER ROLES</div>
+    <div class="">
+      <mat-radio-group [(ngModel)]="role">
+        <mat-radio-button class="" value="USER">USER</mat-radio-button>
+        <mat-radio-button class="" value="ADMIN">ADMIN</mat-radio-button>
+      </mat-radio-group>
+    </div>
+  </div>
+  <button class="float-right mr-3" matDialogClose="" mat-button color="accent">Cancel</button>
+  <button class="float-right" mat-button color="primary" (click)="onSave()">Save</button>
+</div>

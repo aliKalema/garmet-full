@@ -1,0 +1,73 @@
+<app-header></app-header>
+
+<div *ngIf="(dataSource | async)?.length" class="max-w-7xl mx-auto py-5">
+  <table mat-table [dataSource]="(dataSource! | async)!" class="mat-elevation-z8 w-full">
+    <ng-container matColumnDef="product">
+      <th mat-header-cell *matHeaderCellDef class="font-semibold" >Product</th>
+      <td mat-cell *matCellDef="let element">
+        <img src="{{ element?.image || '/assets/images/no-image.png'}}" alt="product" class="w-[100px] my-5" />
+      </td>
+      <td mat-footer-cell *matFooterCellDef>
+        <button class="bg-slate-800 text-white" mat-raised-button routerLink="/product">Continue Shopping</button>
+      </td>
+    </ng-container>
+    <ng-container matColumnDef="name">
+      <th class="font-semibold mx-auto" mat-header-cell *matHeaderCellDef>Name</th>
+      <td mat-cell *matCellDef="let element">
+        <p class="truncate max-w-xs font-semibold text-base">{{ element.productName }} ({{ element.varietyName }})</p>
+      </td>
+      <td mat-footer-cell *matFooterCellDef></td>
+    </ng-container>
+    <ng-container matColumnDef="price">
+      <th class="font-semibold" mat-header-cell *matHeaderCellDef>Price</th>
+      <td mat-cell *matCellDef="let element">{{ element.price | currency: 'Ksh' }}</td>
+      <td mat-footer-cell *matFooterCellDef></td>
+    </ng-container>
+    <ng-container matColumnDef="quantity">
+      <th class="font-semibold" mat-header-cell *matHeaderCellDef>Quantity</th>
+      <td  mat-cell *matCellDef="let element">
+        <div class="container items-center w-auto flex">
+          <button mat-icon-button (click)="onUpdateQuantity(element,-1)">
+            <mat-icon>remove</mat-icon>
+          </button>
+          <div class="text-xl font-bold mx-2">{{ element.quantity }}</div>
+          <button mat-icon-button (click)="onUpdateQuantity(element,1)">
+            <mat-icon>add</mat-icon>
+          </button>
+        </div>
+      </td>
+      <td mat-footer-cell *matFooterCellDef></td>
+    </ng-container>
+    <ng-container matColumnDef="total">
+      <th class="font-semibold" mat-header-cell *matHeaderCellDef>Total</th>
+      <td mat-cell *matCellDef="let element">
+        {{ element.quantity * element.price | currency: 'Ksh '}}
+      </td>
+      <td mat-footer-cell *matFooterCellDef>
+        <span class="font-bold py-5 block">{{ total | async | currency: 'Ksh '}}</span>
+      </td>
+    </ng-container>
+    <ng-container matColumnDef="action">
+      <th class="font-semibold" mat-header-cell *matHeaderCellDef>
+        <button (click)="onClearCart()" mat-raised-button olor="warn" class="float-right text-white"  style=" background-color: rgb(220,38,38) !important;">
+          Clear All
+        </button>
+      </th>
+      <td mat-cell *matCellDef="let element">
+        <button (click)="onRemoveFromCart(element)" mat-button color="warn" class="float-right text-white" >
+          remove
+        </button>
+      </td>
+      <td mat-footer-cell *matFooterCellDef>
+        <button (click)="onCheckout()" mat-raised-button  class="float-right border-green-800 text-white bg-slate-800 text-white" style="background-color: rgb(22,101,52) !important">
+          Complete Order
+        </button>
+      </td>
+    </ng-container>
+
+    <tr mat-header-row *matHeaderRowDef="displayedColumns"></tr>
+    <tr mat-row *matRowDef="let row; columns: displayedColumns"></tr>
+    <tr mat-footer-row *matFooterRowDef="displayedColumns"></tr>
+  </table>
+</div>
+

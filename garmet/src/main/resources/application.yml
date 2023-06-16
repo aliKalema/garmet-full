@@ -1,0 +1,22 @@
+spring:
+  datasource:
+    url: ${MYSQL_DB_URI:jdbc:mysql://127.0.0.1:3309/garmet}
+    username: ${MYSQL_USERNAME:root}
+    password: ${MYSQL_PASSWORD:root}
+    driver-class-name: com.mysql.cj.jdbc.Driver
+
+  jpa:
+    database: MYSQL
+    hibernate:
+      ddl-auto: update
+    database-platform: org.hibernate.dialect.MySQL5Dialect
+
+  servlet:
+    multipart:
+      max-file-size: 100MB
+      max-request-size: 200MB
+
+UrlEndpoint: https://ik.imagekit.io/po794lmma
+PrivateKey: private_L8lpAqiuX7X2a8BVkkh6gbaWh9Y=
+PublicKey: public_rilD2w5i/tFVpNFVg7HYLA1cUWs=
+

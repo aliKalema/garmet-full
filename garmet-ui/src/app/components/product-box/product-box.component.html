@@ -1,0 +1,48 @@
+<div class="flex font-sans bg-white border border-slate-200 rounded-md drop-shadow-md" [ngClass]="{'h-full col-span-1 flex-col':!fullWidthMode}">
+  <div  [ngClass]="{'w-48 flex-none  relative':fullWidthMode,'w-full':!fullWidthMode,}">
+    <img  [ngClass]="{'max-h-48 min-w-full rounded-md border border-grey-500':!fullWidthMode, 'w-full h-full absolute inset-0  object-cover':fullWidthMode}" [src]="product?.images?.[0]?.url || '/assets/images/no-image.png' " alt="" loading="lazy" />
+  </div>
+  <div class="flex-auto p-6 relative" [ngClass]="{'w-full flex-grow':!fullWidthMode,}">
+    <div class="flex flex-wrap">
+      <h1 class="flex-auto text-lg font-semibold text-slate-900">
+        {{product.name}}
+      </h1>
+      <div  class="text-lg font-semibold text-slate-500">
+        {{currentVariety?.price || '0' | currency: 'sh ' }}
+      </div>
+      <div class="w-full flex-none text-sm font-medium text-slate-700 mt-2">
+        <mat-chip> {{stockStatus}}</mat-chip>
+      </div>
+    </div>
+    <div class="flex items-baseline mt-4 mb-6 pb-6 border-b border-slate-200">
+      <div class="space-x-2 flex text-sm">
+        <label *ngFor="let variety of product.varieties">
+          <input class="sr-only peer" name="size" type="radio" value="xs"  (click)="selectVariety(variety)" />
+          <div class=" p-3 rounded-lg flex items-center justify-center text-slate-700 peer-checked:font-semibold peer-checked:bg-slate-900 peer-checked:text-white">
+            {{variety.name}}
+          </div>
+        </label>
+      </div>
+    </div>
+
+    <div class="grid grid-cols-8 gap-3 mb-3" *ngIf="fullWidthMode && product.images!.length >1">
+      <ng-container *ngFor="let image of product.images; let i = index">
+        <img class="h-24 border border-grey-300 rounded-md shadow" *ngIf="i!=0" [src]="image?.url || '/assets/images/no-image.png' " alt="">
+      </ng-container>
+    </div>
+
+    <div class="flex space-x-4 mb-6 text-sm font-medium">
+      <div class="flex-auto flex space-x-4">
+        <button class="h-10 px-6 font-semibold rounded-md bg-black text-white" (click)="openQuantityDialog()">
+          Add to Cart
+        </button>
+      </div>
+      <button class="flex-none flex items-center justify-center w-9 h-9 rounded-md text-slate-300 border border-slate-200" type="button" aria-label="Like">
+        <mat-icon>favorite</mat-icon>
+      </button>
+    </div>
+    <p class="text-sm text-slate-700" *ngIf="fullWidthMode">
+      {{product?.description || ''}}
+    </p>
+  </div>
+</div>

@@ -1,0 +1,76 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<Diagram>
+  <ID>DATABASE</ID>
+  <OriginalElement>29ea9c4f-5810-4378-a220-b62e059443fd.SCHEMA:garmet</OriginalElement>
+  <nodes>
+    <node x="-92.0" y="568.0">29ea9c4f-5810-4378-a220-b62e059443fd.TABLE:garmet.category</node>
+    <node x="148.0" y="404.5">29ea9c4f-5810-4378-a220-b62e059443fd.TABLE:garmet.image_tags</node>
+    <node x="135.0" y="568.0">29ea9c4f-5810-4378-a220-b62e059443fd.TABLE:garmet.role</node>
+    <node x="805.5" y="165.5">29ea9c4f-5810-4378-a220-b62e059443fd.TABLE:garmet.user_roles</node>
+    <node x="123.0" y="-130.0">29ea9c4f-5810-4378-a220-b62e059443fd.TABLE:garmet.product</node>
+    <node x="136.0" y="95.0">29ea9c4f-5810-4378-a220-b62e059443fd.TABLE:garmet.image</node>
+    <node x="685.25" y="-130.0">29ea9c4f-5810-4378-a220-b62e059443fd.TABLE:garmet.user</node>
+    <node x="-69.0" y="67.0">29ea9c4f-5810-4378-a220-b62e059443fd.TABLE:garmet.product_variety</node>
+    <node x="591.0" y="348.0">29ea9c4f-5810-4378-a220-b62e059443fd.TABLE:garmet.orders_order_items</node>
+    <node x="-84.0" y="376.0">29ea9c4f-5810-4378-a220-b62e059443fd.TABLE:garmet.order_item</node>
+    <node x="333.00000000000006" y="151.5">29ea9c4f-5810-4378-a220-b62e059443fd.TABLE:garmet.product_categories</node>
+    <node x="611.5" y="123.0">29ea9c4f-5810-4378-a220-b62e059443fd.TABLE:garmet.orders</node>
+    <node x="-110.0" y="765.0">29ea9c4f-5810-4378-a220-b62e059443fd.TABLE:garmet.category_children</node>
+  </nodes>
+  <notes />
+  <edges>
+    <edge source="29ea9c4f-5810-4378-a220-b62e059443fd.TABLE:garmet.category_children" target="29ea9c4f-5810-4378-a220-b62e059443fd.TABLE:garmet.category" relationship="REFERENCES">
+      <point x="0.0" y="-45.0" />
+      <point x="0.0" y="73.5" />
+    </edge>
+    <edge source="29ea9c4f-5810-4378-a220-b62e059443fd.TABLE:garmet.orders" target="29ea9c4f-5810-4378-a220-b62e059443fd.TABLE:garmet.user" relationship="REFERENCES">
+      <point x="0.0" y="-87.5" />
+      <point x="698.5" y="98.0" />
+      <point x="785.25" y="98.0" />
+      <point x="0.0" y="101.5" />
+    </edge>
+    <edge source="29ea9c4f-5810-4378-a220-b62e059443fd.TABLE:garmet.order_item" target="29ea9c4f-5810-4378-a220-b62e059443fd.TABLE:garmet.product_variety" relationship="REFERENCES">
+      <point x="0.0" y="-73.5" />
+      <point x="0.0" y="129.5" />
+    </edge>
+    <edge source="29ea9c4f-5810-4378-a220-b62e059443fd.TABLE:garmet.user_roles" target="29ea9c4f-5810-4378-a220-b62e059443fd.TABLE:garmet.user" relationship="REFERENCES">
+      <point x="0.0" y="-45.0" />
+      <point x="872.0" y="98.0" />
+      <point x="785.25" y="98.0" />
+      <point x="0.0" y="101.5" />
+    </edge>
+    <edge source="29ea9c4f-5810-4378-a220-b62e059443fd.TABLE:garmet.image" target="29ea9c4f-5810-4378-a220-b62e059443fd.TABLE:garmet.product" relationship="REFERENCES">
+      <point x="0.0" y="-101.5" />
+      <point x="0.0" y="73.5" />
+    </edge>
+    <edge source="29ea9c4f-5810-4378-a220-b62e059443fd.TABLE:garmet.product_variety" target="29ea9c4f-5810-4378-a220-b62e059443fd.TABLE:garmet.product" relationship="REFERENCES">
+      <point x="0.0" y="-129.5" />
+      <point x="22.0" y="42.0" />
+      <point x="224.5" y="42.0" />
+      <point x="0.0" y="73.5" />
+    </edge>
+    <edge source="29ea9c4f-5810-4378-a220-b62e059443fd.TABLE:garmet.product_categories" target="29ea9c4f-5810-4378-a220-b62e059443fd.TABLE:garmet.product" relationship="REFERENCES">
+      <point x="2.8421709430404007E-14" y="-45.0" />
+      <point x="439.5" y="42.0" />
+      <point x="224.5" y="42.0" />
+      <point x="0.0" y="73.5" />
+    </edge>
+    <edge source="29ea9c4f-5810-4378-a220-b62e059443fd.TABLE:garmet.image_tags" target="29ea9c4f-5810-4378-a220-b62e059443fd.TABLE:garmet.image" relationship="REFERENCES">
+      <point x="0.0" y="-45.0" />
+      <point x="0.0" y="101.5" />
+    </edge>
+    <edge source="29ea9c4f-5810-4378-a220-b62e059443fd.TABLE:garmet.orders_order_items" target="29ea9c4f-5810-4378-a220-b62e059443fd.TABLE:garmet.orders" relationship="REFERENCES">
+      <point x="0.0" y="-45.0" />
+      <point x="0.0" y="87.5" />
+    </edge>
+  </edges>
+  <settings layout="Hierarchic" zoom="0.6487562189054726" showDependencies="false" x="424.5" y="372.5" />
+  <SelectedNodes />
+  <Categories>
+    <Category>Columns</Category>
+    <Category>Comments</Category>
+    <Category>Key columns</Category>
+    <Category>Virtual foreign keys</Category>
+  </Categories>
+</Diagram>
+

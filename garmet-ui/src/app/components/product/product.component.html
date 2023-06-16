@@ -1,0 +1,21 @@
+<div class="max-w-7xl mx-auto mb-2" >
+  <app-header></app-header>
+</div>
+<mat-drawer-container [autosize]="true" class="min-h-full max-w-7xl  container mx-auto  bg-slate-100">
+  <mat-drawer mode="side" opened class="bg-slate-100 pr-2">
+    <app-filter></app-filter>
+  </mat-drawer>
+  <mat-drawer-content class="py-2 px-2 bg-slate-100" style="border: none">
+    <div class="w-full h-full bg-slate-100 ">
+      <div class="mb-2">
+        <app-product-header (columnsCountChange)="onColumnsCountChange($event)"></app-product-header>
+      </div>
+      <div *ngIf="products && products.length" class="grid gap-4 items-stretch" [ngClass]="{'grid-cols-1': cols === 1, 'grid-cols-3': cols === 3, 'grid-cols-4': cols === 4,}">
+        <app-product-box *ngFor="let product of products" (addToCart)="onAddToCart($event)"  [product]="product" [fullWidthMode]="cols === 1">
+        </app-product-box>
+      </div>
+      <mat-paginator class="my-4 mx-1 border-none " [length]="pageState?.totalElements || 0 " [pageSize]="pageState.pageSize" [pageSizeOptions]="pageSizeOptions"> </mat-paginator>
+
+    </div>
+  </mat-drawer-content>
+</mat-drawer-container>

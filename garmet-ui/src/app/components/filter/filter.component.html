@@ -1,0 +1,71 @@
+<div class="px-3">
+  <div class="flex justify-between container items-center py-3 mb-2">
+    <div class="text-base font-semibold text-slate-800">
+      FILTERS
+    </div>
+    <div>
+      <button mat-raised-button class="text-white bg-slate-800 text-sm rounded px-2 py-1">CLEAR</button>
+    </div>
+  </div>
+  <div>
+    <mat-expansion-panel [expanded]="true" class="border-none mb-3">
+      <mat-expansion-panel-header class="toggle-color">
+        <mat-panel-title class="text-base font-semibold text-grey-400"> PRICE </mat-panel-title>
+      </mat-expansion-panel-header>
+
+      <div class="w-full">
+        <mat-slider #slider class="text-green-800 w-full" step="0.5">
+          <input matSliderThumb>
+        </mat-slider>
+      </div>
+
+      <div class="flex justify-between">
+        <mat-form-field class="mx-2 w-[120px]" appearance="fill" floatLabel="always">
+          <mat-label class="font-semibold">FROM</mat-label>
+          <input matInput type="number"  placeholder="0" style="padding-bottom: 18px">
+        </mat-form-field>
+        <mat-form-field class="mx-2 w-[120px]" appearance="fill" floatLabel="always">
+          <mat-label class="font-semibold">TO</mat-label>
+          <input matInput type="number"  placeholder="0" style="padding-bottom: 18px">
+        </mat-form-field>
+      </div>
+    </mat-expansion-panel>
+
+    <mat-expansion-panel [expanded]="true" class="mb-3">
+      <mat-expansion-panel-header class="toggle-color">
+        <mat-panel-title class="text-base font-semibold text-grey-400"> AVAILABILITY </mat-panel-title>
+      </mat-expansion-panel-header>
+      <div class="grid grid-cols-1 ">
+        <mat-checkbox class="text-base font-medium text-grey-200"> IN STOCK</mat-checkbox>
+        <mat-checkbox class="text-base font-medium text-grey-200"> OUT OF STOCK</mat-checkbox>
+      </div>
+    </mat-expansion-panel>
+
+    <mat-expansion-panel *ngIf="categories" [expanded]="true" class="mb-3">
+      <mat-expansion-panel-header class="toggle-color">
+        <mat-panel-title class="text-base font-semibold text-grey-400"> CATEGORIES </mat-panel-title>
+      </mat-expansion-panel-header>
+      <mat-selection-list [multiple]="false">
+        <mat-list-option  *ngFor="let category of categories" [value]="category.refId" >
+          <button class="text-base font-medium text-grey-200 uppercase" (click)="onShowCategory(category)">{{ category.name }}</button>
+        </mat-list-option>
+      </mat-selection-list>
+    </mat-expansion-panel>
+
+    <mat-expansion-panel class="mb-3">
+      <mat-expansion-panel-header class="toggle-color">
+        <mat-panel-title class="text-base font-semibold text-grey-400"> BRAND </mat-panel-title>
+      </mat-expansion-panel-header>
+      <mat-selection-list [multiple]="false">
+      </mat-selection-list>
+    </mat-expansion-panel>
+
+    <mat-expansion-panel class="mb-3">
+      <mat-expansion-panel-header class="toggle-color">
+        <mat-panel-title class="text-base font-semibold text-grey-400"> TAGS </mat-panel-title>
+      </mat-expansion-panel-header>
+      <mat-selection-list [multiple]="false">
+      </mat-selection-list>
+    </mat-expansion-panel>
+  </div>
+</div>

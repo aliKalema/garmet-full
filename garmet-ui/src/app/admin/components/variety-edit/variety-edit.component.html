@@ -1,0 +1,56 @@
+<div class="w-full bg-white p-14">
+  <div class="w-11/12 mx-auto">
+    <div class="text-slate-700 w-full my-8 text-xl font-semibold text-slate-900 ">
+      ADD PRODUCT VARIETY
+    </div>
+    <div>
+      <form #varietyForm="ngForm" (ngSubmit)="onSaveForm(varietyForm)">
+        <div class="container">
+          <div style="font-size: 16px;">
+            <mat-form-field appearance="outline" class="w-full">
+              <mat-label>Name</mat-label>
+              <input  matInput   name="name" [(ngModel)]="variety.name" required />
+            </mat-form-field>
+          </div>
+        </div>
+
+        <div class="container">
+          <div style="font-size: 16px;">
+            <mat-form-field appearance="outline" class="w-full">
+              <mat-label>Price</mat-label>
+              <input type="number" matInput  name="price" [(ngModel)]="variety.price" required />
+            </mat-form-field>
+          </div>
+        </div>
+
+        <div class="container">
+          <div style="font-size: 16px;">
+            <mat-form-field appearance="outline" class="w-full">
+              <mat-label>Quantity</mat-label>
+              <input type="number" matInput  name="quantity" [(ngModel)]="variety.quantity" required />
+            </mat-form-field>
+          </div>
+        </div>
+
+        <div class="container">
+          <div style="font-size: 16px;">
+            <mat-form-field appearance="outline" class="w-full">
+              <mat-label>Min Quantity</mat-label>
+              <input type="number" matInput  name="minQuantity" [(ngModel)]="variety.minQuantity" required />
+            </mat-form-field>
+          </div>
+        </div>
+
+        <div class="flex mt-3 justify-center md:justify-end">
+          <a mat-stroked-button class="border border-blue-500 text-blue-500 w-auto md:w-40" matDialogClose="" (click)="clearForm(varietyForm)">
+            CANCEL
+          </a>
+          &nbsp; &nbsp;
+          <button type="submit" mat-raised-button class="bg-blue-500 text-white container items-center w-auto md:w-40  font-semibold">
+            SAVE
+          </button>
+        </div>
+      </form>
+    </div>
+  </div>
+</div>
